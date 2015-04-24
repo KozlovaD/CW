@@ -1,0 +1,6 @@
+C:\Users\root\AppData\Local\Temporary Projects\Koz_Gor_kurs\bin\Debug\Koz_Gor_kurs.exe
+C:\Users\root\AppData\Local\Temporary Projects\Koz_Gor_kurs\bin\Debug\Koz_Gor_kurs.pdb
+C:\Users\root\AppData\Local\Temporary Projects\Koz_Gor_kurs\obj\x86\Debug\Koz_Gor_kurs.Properties.Resources.resources
+C:\Users\root\AppData\Local\Temporary Projects\Koz_Gor_kurs\obj\x86\Debug\Koz_Gor_kurs.csproj.GenerateResource.Cache
+C:\Users\root\AppData\Local\Temporary Projects\Koz_Gor_kurs\obj\x86\Debug\Koz_Gor_kurs.exe
+C:\Users\root\AppData\Local\Temporary Projects\Koz_Gor_kurs\obj\x86\Debug\Koz_Gor_kurs.pdb
