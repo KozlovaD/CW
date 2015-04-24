@@ -1,0 +1,7 @@
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\bin\Debug\Kozlova_Gorbunova.exe
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\bin\Debug\Kozlova_Gorbunova.pdb
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Debug\Koz_Gor_kurs.Form1.resources
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Debug\Koz_Gor_kurs.Properties.Resources.resources
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Debug\Kozlova_Gorbunova.csproj.GenerateResource.Cache
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Debug\Kozlova_Gorbunova.exe
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Debug\Kozlova_Gorbunova.pdb
