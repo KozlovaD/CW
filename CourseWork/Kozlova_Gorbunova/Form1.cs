@@ -14,32 +14,38 @@ namespace Koz_Gor_kurs
 {
     public partial class Form1 : Form
     {
+        private SQLiteConnection cnn = new SQLiteConnection("Data Source = base.db");
+        private DataTable dt = new DataTable();
+        private SQLiteCommand cmd;
+
         public Form1()
         {
             InitializeComponent();
-            //MessageBox.Show("Hello");
-             FillData();
-        }
-
-        void FillData()
-        {
+            cnn.Open();
+            m1_0();
             //SQLiteConnection.CreateFile("base.db");
 
-            SQLiteConnection cnn = new SQLiteConnection("Data Source = base.db");
-            DataTable dt = new DataTable();
-            SQLiteCommand cmd;
-            cnn.Open();
+
 
             //cmd = new SQLiteCommand("CREATE TABLE kosmetika(id int PRIMARY KEY, type TEXT, name TEXT, stoimost DOUBLE, count INTEGER, end_date DATE)", cnn);
             //cmd = new SQLiteCommand("UPDATE kosmetika SET count = 3 WHERE id = 1", cnn);
-            //cmd = new SQLiteCommand( "CREATE TABLE client(id int PRIMARY KEY, fio TEXT, sym DOUBLE)", cnn);
+            //cmd = new SQLiteCommand( "CREATE TABLE client(id INTEGER PRIMARY KEY  AUTOINCREMENT, fio TEXT, sym DOUBLE)", cnn);
             //cmd = new SQLiteCommand("CREATE TABLE harakteristika(id int PRIMARY KEY, name TEXT)", cnn);
             //cmd = new SQLiteCommand("CREATE TABLE harakteristika_kosmetika(id_kosmetika int, id_harakteristika int)", cnn);
             //cmd = new SQLiteCommand("CREATE TABLE harakteristika_client(id_client int, id_harakteristika int)", cnn);
             //cmd = new SQLiteCommand("CREATE TABLE prodaja(id int PRIMARY KEY, data DATE, sym DOUBLE, skidka DOUBLE)", cnn);
             //cmd = new SQLiteCommand("CREATE TABLE list_prodaja(id_prodaja int, id_client int, id_kosmetika int, count int, sym DOUBLE)", cnn);
-            //cmd.ExecuteNonQuery();
 
+
+            //cmd.CommandText = "DROP TABLE client";
+            cmd.ExecuteNonQuery();
+
+
+            //cnn.Close();
+
+        }
+
+        private void m1_0() {
             cmd = new SQLiteCommand("SELECT * FROM kosmetika ORDER BY end_date", cnn);
             dt.Load(cmd.ExecuteReader());
             dataGridView2.DataSource = dt;
@@ -48,44 +54,75 @@ namespace Koz_Gor_kurs
 
             cmd = new SQLiteCommand("SELECT * FROM kosmetika WHERE count < 5 ORDER BY count", cnn);
             dt.Load(cmd.ExecuteReader());
-            dataGridView1.DataSource = dt;
+            dataGridView1.DataSource = dt;        
+        }
+        private void m1_1() {
+            m2_0();
+        }
+        private void m2_0() {
+            //cmd.CommandText = "DELETE FROM client";
+            //cmd.ExecuteNonQuery();
 
-            cnn.Close();
-
-/*
-            var sql_con = new SQLiteConnection("Data Source = base.db");
-            var txtQuery = "SELECT * FROM kosmetika ORDER BY time_end_kosmetika";
-            //var txtQuery = "INSERT INTO `kosmetika` (`id`, `type`, `name`, `stoimost`, `count`, `end_date`) VALUES (2, 'pomada', 'pomada_2', 140, 10, '2016-04-01');";
-            sql_con.Open();
-
-            var sql_cmd = sql_con.CreateCommand();
-            sql_cmd.CommandText = txtQuery;
-
-            sql_cmd.ExecuteNonQuery();
-            sql_con.Close();
-*/            
-            /*
-            using (SqlCeConnection c = new SqlCeConnection(
-Properties.Settings.Default.DatabaseConnectionString))
-            {
-                c.Open();
-                // 2
-                // Create new DataAdapter
-                using (SqlCeDataAdapter a = new SqlCeDataAdapter(
-                    "SELECT * FROM kosmetika ORDER BY time_end_kosmetika", c))
-                {
-                    // 3
-                    // Use DataAdapter to fill DataTable
-                    DataTable t = new DataTable();
-                    a.Fill(t);
-                    // 4
-                    // Render data onto the screen
-                    dataGridView2.DataSource = t;
-                }
-            }*/
-
+            cmd.CommandText = "SELECT * FROM client";
+            dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            dataGridView3.DataSource = dt;
+        }
+        private void m2_1() {
+            //вкладка добавление пользователя
         }
 
+        private void TabControl1_Selected(Object sender, TabControlEventArgs e)
+        {
+            switch (e.TabPageIndex)
+            {
+                case 0: //главная
+                    m1_0();
+                    break;
+                case 1://клиент
+                    m1_1(); 
+                    break;
+                case 2://товар
+                    MessageBox.Show("Выбрана первая вкладка");
+                    break;
+                case 3://подбор товара
+                    MessageBox.Show("Выбрана первая вкладка");
+                    break;
+                case 4://продажа
+                    MessageBox.Show("Выбрана первая вкладка");
+                    break;
+                case 5://характеристика
+                    MessageBox.Show("Выбрана первая вкладка");
+                    break;
+                case 6://отчет 
+                    MessageBox.Show("Выбрана первая вкладка");
+                    break;
+                case 7://визитка
+                    MessageBox.Show("Выбрана первая вкладка");
+                    break;
+                default://
+                    MessageBox.Show("Шойтан, как ты суда попал? " + e.TabPageIndex);
+                    break;
+            }
+        }
+
+
+        private void TabControl2_Selected(Object sender, TabControlEventArgs e)
+        {
+            switch (e.TabPageIndex)
+            {
+                case 0: //список
+                    m2_0();
+                break;
+                case 1: //добавить
+                    m2_1();
+                break;
+
+                default://
+                    MessageBox.Show("Шойтан, как ты суда попал? " + e.TabPageIndex);
+                    break;
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -112,6 +149,28 @@ Properties.Settings.Default.DatabaseConnectionString))
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Список_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void client_add_Click(object sender, EventArgs e)
+        {
+            cmd.CommandText = "INSERT INTO client (fio, sym) VALUES (\'" + client_fio.Text + "\', 0)";
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Успешно добавлен!");
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Add_Click(object sender, EventArgs e)
         {
 
         }
