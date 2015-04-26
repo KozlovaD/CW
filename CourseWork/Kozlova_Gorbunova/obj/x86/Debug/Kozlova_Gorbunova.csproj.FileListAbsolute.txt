@@ -5,3 +5,6 @@ C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Debug\Koz_Gor_kur
 C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Debug\Kozlova_Gorbunova.csproj.GenerateResource.Cache
 C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Debug\Kozlova_Gorbunova.exe
 C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Debug\Kozlova_Gorbunova.pdb
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\bin\Debug\Kozlova_Gorbunova.exe.config
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\bin\Debug\System.Data.SQLite.dll
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Debug\Kozlova_Gorbunova.csprojResolveAssemblyReference.cache
