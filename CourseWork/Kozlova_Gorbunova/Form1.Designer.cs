@@ -37,7 +37,14 @@
             this.Клиент = new System.Windows.Forms.TabPage();
             this.Характеристика = new System.Windows.Forms.TabPage();
             this.Визитка = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
+            this.Главная.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -61,6 +68,10 @@
             // 
             // Главная
             // 
+            this.Главная.Controls.Add(this.dataGridView2);
+            this.Главная.Controls.Add(this.dataGridView1);
+            this.Главная.Controls.Add(this.label2);
+            this.Главная.Controls.Add(this.label1);
             this.Главная.Location = new System.Drawing.Point(4, 24);
             this.Главная.Name = "Главная";
             this.Главная.Padding = new System.Windows.Forms.Padding(3);
@@ -68,6 +79,7 @@
             this.Главная.TabIndex = 0;
             this.Главная.Text = "Главная";
             this.Главная.UseVisualStyleBackColor = true;
+            this.Главная.Click += new System.EventHandler(this.Главная_Click);
             // 
             // Отчет
             // 
@@ -133,6 +145,42 @@
             this.Визитка.Text = "Визитка";
             this.Визитка.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(134, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Заканчивающейся товар";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 166);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Истекающий срок годности";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(15, 26);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(640, 137);
+            this.dataGridView1.TabIndex = 2;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(16, 182);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(639, 142);
+            this.dataGridView2.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -143,6 +191,10 @@
             this.Text = "CourseWorks";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
+            this.Главная.ResumeLayout(false);
+            this.Главная.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -158,6 +210,10 @@
         private System.Windows.Forms.TabPage Клиент;
         private System.Windows.Forms.TabPage Характеристика;
         private System.Windows.Forms.TabPage Визитка;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label2;
 
 
     }
