@@ -38,7 +38,10 @@ namespace Koz_Gor_kurs
 
 
             //cmd.CommandText = "DROP TABLE client";
-            cmd.ExecuteNonQuery();
+            //cmd.CommandText = "DROP TABLE kosmetika";
+            //cmd.ExecuteNonQuery(); 
+            //cmd = new SQLiteCommand("CREATE TABLE kosmetika(id INTEGER PRIMARY KEY AUTOINCREMENT, type TEXT, name TEXT, stoimost DOUBLE, count INTEGER, end_date DATE)", cnn);
+            //cmd.ExecuteNonQuery();
 
 
             //cnn.Close();
@@ -46,6 +49,10 @@ namespace Koz_Gor_kurs
         }
 
         private void m1_0() {
+            //cmd = new SQLiteCommand("DELETE FROM kosmetika", cnn);
+            //cmd = new SQLiteCommand("INSERT INTO `kosmetika` (`type`, `name`, `stoimost`, `count`, `end_date`) VALUES ('pomada', 'pomada_1', 100, 10, '2015-04-01');", cnn);
+            //cmd.ExecuteNonQuery();
+
             cmd = new SQLiteCommand("SELECT * FROM kosmetika ORDER BY end_date", cnn);
             dt.Load(cmd.ExecuteReader());
             dataGridView2.DataSource = dt;
@@ -58,6 +65,12 @@ namespace Koz_Gor_kurs
         }
         private void m1_1() {
             m2_0();
+        }
+        private void m1_2() {
+            dt = new DataTable();
+            cmd.CommandText = "SELECT * FROM kosmetika";
+            dt.Load(cmd.ExecuteReader());
+            dataGridView4.DataSource = dt;
         }
         private void m2_0() {
             //cmd.CommandText = "DELETE FROM client";
@@ -72,6 +85,11 @@ namespace Koz_Gor_kurs
             //вкладка добавление пользователя
         }
 
+        private void m3_0() {
+            m1_2();
+        }
+        private void m3_1() { 
+        }
         private void TabControl1_Selected(Object sender, TabControlEventArgs e)
         {
             switch (e.TabPageIndex)
@@ -83,7 +101,7 @@ namespace Koz_Gor_kurs
                     m1_1(); 
                     break;
                 case 2://товар
-                    MessageBox.Show("Выбрана первая вкладка");
+                    m1_2();
                     break;
                 case 3://подбор товара
                     MessageBox.Show("Выбрана первая вкладка");
@@ -117,6 +135,23 @@ namespace Koz_Gor_kurs
                 case 1: //добавить
                     m2_1();
                 break;
+
+                default://
+                    MessageBox.Show("Шойтан, как ты суда попал? " + e.TabPageIndex);
+                    break;
+            }
+        }
+
+        private void TabControl3_Selected(Object sender, TabControlEventArgs e)
+        {
+            switch (e.TabPageIndex)
+            {
+                case 0: //список
+                    m3_0();
+                    break;
+                case 1: //добавить
+                    m3_1();
+                    break;
 
                 default://
                     MessageBox.Show("Шойтан, как ты суда попал? " + e.TabPageIndex);
@@ -173,6 +208,19 @@ namespace Koz_Gor_kurs
         private void Add_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kosmetika_add_Click(object sender, EventArgs e)
+        {
+            cmd.CommandText = "INSERT INTO kosmetika (type, name, stoimost, count, end_date) VALUES (\'" + kosmetika_type.Text + "\', \'" + kosmetika_name.Text + "\', " + kosmetika_stoimost.Text + ", " + kosmetika_count.Text + ", \'" + kosmetika_date.Text.Replace('.', '-') + "\');";
+            cmd.ExecuteNonQuery();
+            //MessageBox.Show(cmd.CommandText);
+            MessageBox.Show("Успешно добавлена");
         }
     }
 }
