@@ -188,6 +188,5 @@ namespace Koz_Gor_kurs
 
         }
 
-
     }
 }
