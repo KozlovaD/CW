@@ -152,7 +152,8 @@ namespace Koz_Gor_kurs
                 case 1: //добавить
                     //MessageBox.Show("Add tovar");
                     break;
-
+                case 2: // редактировать
+                    break;
                 default://
                     MessageBox.Show("Шойтан, как ты суда попал? " + e.TabPageIndex);
                     break;
