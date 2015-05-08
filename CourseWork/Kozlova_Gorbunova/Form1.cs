@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 
 using System.Data.SQLite;
-//using System.Data.SqlServerCe;
 
 namespace Koz_Gor_kurs
 {
@@ -72,6 +71,12 @@ namespace Koz_Gor_kurs
             dt.Load(cmd.ExecuteReader());
             dataGridView4.DataSource = dt;
         }
+        private void m1_3() {
+            m3_0();
+        }
+        private void m3_0() {
+        
+        }
         private void m2_0() {
             //cmd.CommandText = "DELETE FROM client";
             //cmd.ExecuteNonQuery();
@@ -85,11 +90,6 @@ namespace Koz_Gor_kurs
             //вкладка добавление пользователя
         }
 
-        private void m3_0() {
-            m1_2();
-        }
-        private void m3_1() { 
-        }
         private void TabControl1_Selected(Object sender, TabControlEventArgs e)
         {
             switch (e.TabPageIndex)
@@ -104,7 +104,7 @@ namespace Koz_Gor_kurs
                     m1_2();
                     break;
                 case 3://подбор товара
-                    MessageBox.Show("Выбрана первая вкладка");
+                    m1_3();
                     break;
                 case 4://продажа
                     MessageBox.Show("Выбрана первая вкладка");
@@ -150,47 +150,13 @@ namespace Koz_Gor_kurs
                     m3_0();
                     break;
                 case 1: //добавить
-                    m3_1();
+                    //MessageBox.Show("Add tovar");
                     break;
 
                 default://
                     MessageBox.Show("Шойтан, как ты суда попал? " + e.TabPageIndex);
                     break;
             }
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabControl1_Click  (object sender, EventArgs e)
-        {
-           
-        }
-
-        private void Главная_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void Список_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void client_add_Click(object sender, EventArgs e)
@@ -200,20 +166,6 @@ namespace Koz_Gor_kurs
             MessageBox.Show("Успешно добавлен!");
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Add_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void kosmetika_add_Click(object sender, EventArgs e)
         {
@@ -222,5 +174,22 @@ namespace Koz_Gor_kurs
             //MessageBox.Show(cmd.CommandText);
             MessageBox.Show("Успешно добавлена");
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (id_client.Text != "") {
+                try
+                {
+                    cmd.CommandText = "SELECT * FROM client  WHERE id = '" + id_client.Text + "'";
+                    MessageBox.Show("Введено число!");
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Введено не число!");
+                }
+            }
+        }
+
+
     }
 }
