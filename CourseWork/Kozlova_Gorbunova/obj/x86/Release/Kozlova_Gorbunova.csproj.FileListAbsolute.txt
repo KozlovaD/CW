@@ -1,0 +1,10 @@
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\bin\Release\Kozlova_Gorbunova.exe.config
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\bin\Release\Kozlova_Gorbunova.exe
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\bin\Release\Kozlova_Gorbunova.pdb
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\bin\Release\System.Data.SQLite.dll
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Release\Kozlova_Gorbunova.csprojResolveAssemblyReference.cache
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Release\Koz_Gor_kurs.Form1.resources
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Release\Koz_Gor_kurs.Properties.Resources.resources
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Release\Kozlova_Gorbunova.csproj.GenerateResource.Cache
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Release\Kozlova_Gorbunova.exe
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Release\Kozlova_Gorbunova.pdb

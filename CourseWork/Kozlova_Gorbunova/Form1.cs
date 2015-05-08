@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 
 using System.Data.SQLite;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace Koz_Gor_kurs
 {
@@ -47,7 +49,8 @@ namespace Koz_Gor_kurs
 
         }
 
-        private void m1_0() {
+        private void m1_0()
+        {
             //cmd = new SQLiteCommand("DELETE FROM kosmetika", cnn);
             //cmd = new SQLiteCommand("INSERT INTO `kosmetika` (`type`, `name`, `stoimost`, `count`, `end_date`) VALUES ('pomada', 'pomada_1', 100, 10, '2015-04-01');", cnn);
             //cmd.ExecuteNonQuery();
@@ -60,24 +63,29 @@ namespace Koz_Gor_kurs
 
             cmd = new SQLiteCommand("SELECT * FROM kosmetika WHERE count < 5 ORDER BY count", cnn);
             dt.Load(cmd.ExecuteReader());
-            dataGridView1.DataSource = dt;        
+            dataGridView1.DataSource = dt;
         }
-        private void m1_1() {
+        private void m1_1()
+        {
             m2_0();
         }
-        private void m1_2() {
+        private void m1_2()
+        {
             dt = new DataTable();
             cmd.CommandText = "SELECT * FROM kosmetika";
             dt.Load(cmd.ExecuteReader());
             dataGridView4.DataSource = dt;
         }
-        private void m1_3() {
+        private void m1_3()
+        {
             m3_0();
         }
-        private void m3_0() {
-        
+        private void m3_0()
+        {
+
         }
-        private void m2_0() {
+        private void m2_0()
+        {
             //cmd.CommandText = "DELETE FROM client";
             //cmd.ExecuteNonQuery();
 
@@ -86,7 +94,8 @@ namespace Koz_Gor_kurs
             dt.Load(cmd.ExecuteReader());
             dataGridView3.DataSource = dt;
         }
-        private void m2_1() {
+        private void m2_1()
+        {
             //вкладка добавление пользователя
         }
 
@@ -98,7 +107,7 @@ namespace Koz_Gor_kurs
                     m1_0();
                     break;
                 case 1://клиент
-                    m1_1(); 
+                    m1_1();
                     break;
                 case 2://товар
                     m1_2();
@@ -128,12 +137,12 @@ namespace Koz_Gor_kurs
             {
                 case 0: //список
                     m2_0();
-                break;
+                    break;
                 case 1: //добавить
                     m2_1();
-                break;
+                    break;
                 case 2: // редактировать
-                break;
+                    break;
             }
         }
 
@@ -170,7 +179,8 @@ namespace Koz_Gor_kurs
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (id_client.Text != "") {
+            if (id_client.Text != "")
+            {
                 try
                 {
                     cmd.CommandText = "SELECT * FROM client  WHERE id = '" + id_client.Text + "'";
@@ -186,6 +196,50 @@ namespace Koz_Gor_kurs
         private void button8_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            var res = openFileDialog1.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                Bitmap image1 = (Bitmap)Image.FromFile(openFileDialog1.FileName, true);
+                Graphics gui = Graphics.FromImage(image1);
+                gui.DrawString(textBox15.Text.ToString(), new Font("Arial", 16), Brushes.Pink, new PointF(10, 10));
+                pictureBox1.Image = image1;
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.Filter = "Images|*.png;*.bmp;*.jpg";
+            ImageFormat format = ImageFormat.Png;
+            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string ext = System.IO.Path.GetExtension(saveFileDialog1.FileName);
+                switch (ext)
+                {
+                    case ".jpg":
+                        format = ImageFormat.Jpeg;
+                        break;
+                    case ".bmp":
+                        format = ImageFormat.Bmp;
+                        break;
+                }
+                pictureBox1.Image.Save(saveFileDialog1.FileName, format);
+            }
+
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            EMailSender.SendMessage("smtp.mail.ru", "isebd@mail.ru", "qwe123rty456", textBox16.Text, "expirience", "Привет, меня зовут Дарья Козлова и я хочу отправить  тебе свой отчёт!!!");
         }
 
     }
