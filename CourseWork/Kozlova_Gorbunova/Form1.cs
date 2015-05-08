@@ -118,14 +118,11 @@ namespace Koz_Gor_kurs
                 case 7://визитка
                     MessageBox.Show("Выбрана первая вкладка");
                     break;
-                default://
-                    MessageBox.Show("Шойтан, как ты суда попал? " + e.TabPageIndex);
-                    break;
             }
         }
 
 
-        private void TabControl2_Selected(Object sender, TabControlEventArgs e)
+        private void TabControl2_Selected(Object sender, TabControlEventArgs e) // меню клиент
         {
             switch (e.TabPageIndex)
             {
@@ -135,14 +132,12 @@ namespace Koz_Gor_kurs
                 case 1: //добавить
                     m2_1();
                 break;
-
-                default://
-                    MessageBox.Show("Шойтан, как ты суда попал? " + e.TabPageIndex);
-                    break;
+                case 2: // редактировать
+                break;
             }
         }
 
-        private void TabControl3_Selected(Object sender, TabControlEventArgs e)
+        private void TabControl3_Selected(Object sender, TabControlEventArgs e) // меню товар 
         {
             switch (e.TabPageIndex)
             {
@@ -153,9 +148,6 @@ namespace Koz_Gor_kurs
                     //MessageBox.Show("Add tovar");
                     break;
                 case 2: // редактировать
-                    break;
-                default://
-                    MessageBox.Show("Шойтан, как ты суда попал? " + e.TabPageIndex);
                     break;
             }
         }
@@ -189,6 +181,11 @@ namespace Koz_Gor_kurs
                     MessageBox.Show("Введено не число!");
                 }
             }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
         }
 
 
