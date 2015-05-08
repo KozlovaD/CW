@@ -116,16 +116,16 @@ namespace Koz_Gor_kurs
                     m1_3();
                     break;
                 case 4://продажа
-                    MessageBox.Show("Выбрана первая вкладка");
+                  //  MessageBox.Show("Выбрана первая вкладка");
                     break;
                 case 5://характеристика
-                    MessageBox.Show("Выбрана первая вкладка");
+                  //  MessageBox.Show("Выбрана первая вкладка");
                     break;
                 case 6://отчет 
-                    MessageBox.Show("Выбрана первая вкладка");
+                   // MessageBox.Show("Выбрана первая вкладка");
                     break;
                 case 7://визитка
-                    MessageBox.Show("Выбрана первая вкладка");
+                   // MessageBox.Show("Выбрана первая вкладка");
                     break;
             }
         }
@@ -207,11 +207,11 @@ namespace Koz_Gor_kurs
         {
             openFileDialog1.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             var res = openFileDialog1.ShowDialog();
-            if (res == DialogResult.OK)
+           if (res == DialogResult.OK)
             {
                 Bitmap image1 = (Bitmap)Image.FromFile(openFileDialog1.FileName, true);
-                Graphics gui = Graphics.FromImage(image1);
-                gui.DrawString(textBox15.Text.ToString(), new Font("Arial", 16), Brushes.Pink, new PointF(10, 10));
+                //Graphics gui = Graphics.FromImage(image1);
+                //gui.DrawString(textBox15.Text.ToString(), new Font("Arial", 16), Brushes.Pink, new PointF(10, 10));
                 pictureBox1.Image = image1;
             }
         }
@@ -240,6 +240,13 @@ namespace Koz_Gor_kurs
         private void button15_Click(object sender, EventArgs e)
         {
             EMailSender.SendMessage("smtp.mail.ru", "isebd@mail.ru", "qwe123rty456", textBox16.Text, "expirience", "Привет, меня зовут Дарья Козлова и я хочу отправить  тебе свой отчёт!!!");
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            Graphics gui = Graphics.FromImage(pictureBox1.Image);
+            gui.DrawString(textBox15.Text.ToString(), new Font("Arial", 30), Brushes.Pink, new PointF(10, 10));
+            pictureBox1.Image = pictureBox1.Image;    
         }
 
     }
