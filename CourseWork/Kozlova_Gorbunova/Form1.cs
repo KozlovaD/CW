@@ -100,8 +100,11 @@ namespace Koz_Gor_kurs
                 case 4://продажа
                   //  MessageBox.Show("Выбрана первая вкладка");
                     break;
-                case 5://характеристика
-                  //  MessageBox.Show("Выбрана первая вкладка");
+                case 5://характеристика                  
+                    dt = new DataTable();
+                    cmd = new SQLiteCommand("SELECT * FROM harakteristika", cnn);
+                    dt.Load(cmd.ExecuteReader());
+                    dataGridView6.DataSource = dt;
                     break;
                 case 6://отчет 
                    // MessageBox.Show("Выбрана первая вкладка");
@@ -161,7 +164,6 @@ namespace Koz_Gor_kurs
         {
             cmd.CommandText = "INSERT INTO kosmetika (type, name, stoimost, count, end_date) VALUES (\'" + kosmetika_type.Text + "\', \'" + kosmetika_name.Text + "\', " + kosmetika_stoimost.Text + ", " + kosmetika_count.Text + ", \'" + kosmetika_date.Text.Replace('.', '-') + "\');";
             cmd.ExecuteNonQuery();
-            //MessageBox.Show(cmd.CommandText);
             MessageBox.Show("Успешно добавлена");
         }
 
@@ -257,7 +259,14 @@ namespace Koz_Gor_kurs
 
         private void button10_Click(object sender, EventArgs e)
         {
-            cmd.CommandText = "";
+            cmd.CommandText = "INSERT INTO harakteristika(name) VALUES ('" + textBox13.Text + "');";
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Успешно добавлена");
+
+            dt = new DataTable();
+            cmd = new SQLiteCommand("SELECT * FROM harakteristika", cnn);
+            dt.Load(cmd.ExecuteReader());
+            dataGridView6.DataSource = dt;
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -273,6 +282,20 @@ namespace Koz_Gor_kurs
         private void button7_Click(object sender, EventArgs e)
         {
             cmd = new SQLiteCommand("UPDATE client SET fio = '" + textBox7.Text + "', sym = '" + textBox8.Text + "' WHERE id = '" + textBox17.Text + "'", cnn);
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Успешно обновлено!");
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            cmd = new SQLiteCommand("INSERT INTO harakteristika_client(id_client, id_harakteristika) VALUES ('" + textBox18.Text + "', '" + textBox14 + "');", cnn);
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Успешно обновлено!");
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            cmd = new SQLiteCommand("INSERT INTO harakteristika_kosmetika(id_kosmetika, id_harakteristika) VALUES ('" + textBox19.Text + "', '" + textBox14 + "');", cnn);
             cmd.ExecuteNonQuery();
             MessageBox.Show("Успешно обновлено!");
         }
