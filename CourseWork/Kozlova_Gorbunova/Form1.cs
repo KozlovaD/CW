@@ -300,5 +300,45 @@ namespace Koz_Gor_kurs
             MessageBox.Show("Успешно обновлено!");
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            cmd = new SQLiteCommand("SELECT * FROM kosmetika WHERE id = '" + textBox1.Text + "'", cnn);
+            SQLiteDataReader reader = cmd.ExecuteReader();
+
+            if (reader.FieldCount > 0)
+            {
+                foreach (DbDataRecord record in reader)
+                {
+                    textBox20.Text = record["id"].ToString();
+                    textBox2.Text = record["type"].ToString();
+                    textBox3.Text = record["name"].ToString();
+                    textBox4.Text = record["stoimost"].ToString();
+                    textBox5.Text = record["count"].ToString();
+                    dateTimePicker1.Text = record["end_date"].ToString();
+                }
+            }
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            cmd = new SQLiteCommand("DELETE FROM kosmetika WHERE id = '" + textBox20.Text + "'", cnn);
+            cmd.ExecuteNonQuery();
+            textBox20.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            dateTimePicker1.Text = "";
+            MessageBox.Show("Товар удален!");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            cmd = new SQLiteCommand("UPDATE kosmetika SET type = '" + textBox2.Text + "', name = '" + textBox3.Text + "', stoimost = '" + textBox4.Text + "', count = '" + textBox5.Text + "', end_date = '" + dateTimePicker1.Text + "'", cnn);
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Успешно обновлено!");
+        }
+
     }
 }
