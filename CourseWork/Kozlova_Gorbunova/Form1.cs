@@ -288,7 +288,7 @@ namespace Koz_Gor_kurs
 
         private void button11_Click(object sender, EventArgs e)
         {
-            cmd = new SQLiteCommand("INSERT INTO harakteristika_client(id_client, id_harakteristika) VALUES ('" + textBox18.Text + "', '" + textBox14 + "');", cnn);
+            cmd = new SQLiteCommand("INSERT INTO harakteristika_client(id_client, id_harakteristika) VALUES ('" + textBox18.Text + "', '" + textBox14.Text + "');", cnn);
             cmd.ExecuteNonQuery();
             MessageBox.Show("Успешно обновлено!");
         }
@@ -338,6 +338,27 @@ namespace Koz_Gor_kurs
             cmd = new SQLiteCommand("UPDATE kosmetika SET type = '" + textBox2.Text + "', name = '" + textBox3.Text + "', stoimost = '" + textBox4.Text + "', count = '" + textBox5.Text + "', end_date = '" + dateTimePicker1.Text + "'", cnn);
             cmd.ExecuteNonQuery();
             MessageBox.Show("Успешно обновлено!");
+        }
+
+        private void podbor_tovara_Click(object sender, EventArgs e)
+        {
+            cmd = new SQLiteCommand("SELECT harakteristika.name FROM harakteristika, harakteristika_client WHERE  harakteristika.id = harakteristika_client.id_harakteristika AND harakteristika_client.id_client = '" + id_client.Text + "' ", cnn);
+            SQLiteDataReader reader = cmd.ExecuteReader();
+
+            listBox2.Items.Clear();
+
+            foreach (DbDataRecord record in reader)
+            {
+                listBox2.Items.Add(record["name"].ToString());
+            }
+        }
+
+        private void podobratt_Click(object sender, EventArgs e)
+        {
+            dt = new DataTable();
+            cmd = new SQLiteCommand("SELECT kosmetika.id, kosmetika.type, kosmetika.name, kosmetika.stoimost, kosmetika.count, kosmetika.end_date FROM kosmetika, harakteristika, harakteristika_kosmetika WHERE kosmetika.id = harakteristika_kosmetika.id_kosmetika AND  harakteristika_kosmetika.id_harakteristika = harakteristika.id AND harakteristika.name = '" + listBox2.SelectedItem.ToString() + "'  ", cnn);
+            dt.Load(cmd.ExecuteReader());
+            dataGridView5.DataSource = dt;
         }
 
     }
