@@ -90,7 +90,7 @@ namespace Koz_Gor_kurs
                     break;
                 case 2://товар
                     dt = new DataTable();
-                    cmd.CommandText = "SELECT * FROM kosmetika";
+                    cmd = new SQLiteCommand("SELECT * FROM kosmetika", cnn);
                     dt.Load(cmd.ExecuteReader());
                     dataGridView4.DataSource = dt;
                     break;
@@ -295,7 +295,7 @@ namespace Koz_Gor_kurs
 
         private void button12_Click(object sender, EventArgs e)
         {
-            cmd = new SQLiteCommand("INSERT INTO harakteristika_kosmetika(id_kosmetika, id_harakteristika) VALUES ('" + textBox19.Text + "', '" + textBox14 + "');", cnn);
+            cmd = new SQLiteCommand("INSERT INTO harakteristika_kosmetika(id_kosmetika, id_harakteristika) VALUES ('" + textBox19.Text + "', '" + textBox14.Text + "');", cnn);
             cmd.ExecuteNonQuery();
             MessageBox.Show("Успешно обновлено!");
         }
