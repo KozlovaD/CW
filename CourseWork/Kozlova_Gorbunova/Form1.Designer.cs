@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Главная = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -78,6 +78,8 @@
             this.kosmetika_type = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.Редактировать = new System.Windows.Forms.TabPage();
+            this.label33 = new System.Windows.Forms.Label();
+            this.textBox20 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -95,23 +97,44 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.Подбор_Товара = new System.Windows.Forms.TabPage();
+            this.podobratt = new System.Windows.Forms.Button();
+            this.label34 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.id_client = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.Продажа = new System.Windows.Forms.TabPage();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.pr_stoimost_skidka = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.pr_skidka = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.pr_kosmetika_count = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.pr_client_fio = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.pr_id_client_1 = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.pr_kosmetika_stoimost = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.pr_kosmetika_name = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.pr_id_kosmetika_1 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.pr_zapros = new System.Windows.Forms.Button();
+            this.pr_count = new System.Windows.Forms.TextBox();
+            this.pr_id_client = new System.Windows.Forms.TextBox();
+            this.pr_id_kosmetika = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.Характеристика = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.textBox14 = new System.Windows.Forms.TextBox();
@@ -135,14 +158,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.podobratt = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Главная.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -210,65 +225,65 @@
             // 
             // dataGridView2
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.Location = new System.Drawing.Point(6, 182);
             this.dataGridView2.Name = "dataGridView2";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView2.Size = new System.Drawing.Size(656, 142);
             this.dataGridView2.TabIndex = 3;
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Location = new System.Drawing.Point(6, 26);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Size = new System.Drawing.Size(656, 137);
             this.dataGridView1.TabIndex = 2;
             // 
@@ -677,6 +692,23 @@
             this.Редактировать.Text = "Редактировать";
             this.Редактировать.UseVisualStyleBackColor = true;
             // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(16, 70);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(18, 13);
+            this.label33.TabIndex = 18;
+            this.label33.Text = "ID";
+            // 
+            // textBox20
+            // 
+            this.textBox20.Enabled = false;
+            this.textBox20.Location = new System.Drawing.Point(111, 67);
+            this.textBox20.Name = "textBox20";
+            this.textBox20.Size = new System.Drawing.Size(181, 20);
+            this.textBox20.TabIndex = 17;
+            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
@@ -830,6 +862,25 @@
             this.Подбор_Товара.Text = "Подбор Товара";
             this.Подбор_Товара.UseVisualStyleBackColor = true;
             // 
+            // podobratt
+            // 
+            this.podobratt.Location = new System.Drawing.Point(17, 284);
+            this.podobratt.Name = "podobratt";
+            this.podobratt.Size = new System.Drawing.Size(152, 21);
+            this.podobratt.TabIndex = 9;
+            this.podobratt.Text = "Подобрать";
+            this.podobratt.UseVisualStyleBackColor = true;
+            this.podobratt.Click += new System.EventHandler(this.podobratt_Click);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(26, 88);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(137, 13);
+            this.label34.TabIndex = 8;
+            this.label34.Text = "Характеристики клиента:";
+            // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
@@ -874,12 +925,27 @@
             // 
             // Продажа
             // 
-            this.Продажа.Controls.Add(this.textBox12);
-            this.Продажа.Controls.Add(this.label25);
-            this.Продажа.Controls.Add(this.button9);
-            this.Продажа.Controls.Add(this.textBox11);
-            this.Продажа.Controls.Add(this.textBox10);
-            this.Продажа.Controls.Add(this.textBox9);
+            this.Продажа.Controls.Add(this.button2);
+            this.Продажа.Controls.Add(this.pr_stoimost_skidka);
+            this.Продажа.Controls.Add(this.label41);
+            this.Продажа.Controls.Add(this.pr_skidka);
+            this.Продажа.Controls.Add(this.label40);
+            this.Продажа.Controls.Add(this.pr_kosmetika_count);
+            this.Продажа.Controls.Add(this.label39);
+            this.Продажа.Controls.Add(this.pr_client_fio);
+            this.Продажа.Controls.Add(this.label38);
+            this.Продажа.Controls.Add(this.pr_id_client_1);
+            this.Продажа.Controls.Add(this.label37);
+            this.Продажа.Controls.Add(this.pr_kosmetika_stoimost);
+            this.Продажа.Controls.Add(this.label36);
+            this.Продажа.Controls.Add(this.pr_kosmetika_name);
+            this.Продажа.Controls.Add(this.label35);
+            this.Продажа.Controls.Add(this.pr_id_kosmetika_1);
+            this.Продажа.Controls.Add(this.label9);
+            this.Продажа.Controls.Add(this.pr_zapros);
+            this.Продажа.Controls.Add(this.pr_count);
+            this.Продажа.Controls.Add(this.pr_id_client);
+            this.Продажа.Controls.Add(this.pr_id_kosmetika);
             this.Продажа.Controls.Add(this.label24);
             this.Продажа.Controls.Add(this.label23);
             this.Продажа.Controls.Add(this.label22);
@@ -890,51 +956,182 @@
             this.Продажа.Text = "Продажа";
             this.Продажа.UseVisualStyleBackColor = true;
             // 
-            // textBox12
+            // button2
             // 
-            this.textBox12.Location = new System.Drawing.Point(95, 105);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(100, 20);
-            this.textBox12.TabIndex = 8;
+            this.button2.Location = new System.Drawing.Point(372, 64);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 25;
+            this.button2.Text = "Продать";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label25
+            // pr_stoimost_skidka
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(17, 108);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(44, 13);
-            this.label25.TabIndex = 7;
-            this.label25.Text = "Скидка";
+            this.pr_stoimost_skidka.Enabled = false;
+            this.pr_stoimost_skidka.Location = new System.Drawing.Point(552, 144);
+            this.pr_stoimost_skidka.Name = "pr_stoimost_skidka";
+            this.pr_stoimost_skidka.Size = new System.Drawing.Size(100, 20);
+            this.pr_stoimost_skidka.TabIndex = 24;
             // 
-            // button9
+            // label41
             // 
-            this.button9.Location = new System.Drawing.Point(120, 131);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 6;
-            this.button9.Text = "Продать";
-            this.button9.UseVisualStyleBackColor = true;
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(458, 147);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(93, 13);
+            this.label41.TabIndex = 23;
+            this.label41.Text = "Цена со скидкой";
             // 
-            // textBox11
+            // pr_skidka
             // 
-            this.textBox11.Location = new System.Drawing.Point(95, 79);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 20);
-            this.textBox11.TabIndex = 5;
+            this.pr_skidka.Enabled = false;
+            this.pr_skidka.Location = new System.Drawing.Point(552, 118);
+            this.pr_skidka.Name = "pr_skidka";
+            this.pr_skidka.Size = new System.Drawing.Size(100, 20);
+            this.pr_skidka.TabIndex = 22;
             // 
-            // textBox10
+            // label40
             // 
-            this.textBox10.Location = new System.Drawing.Point(95, 49);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 20);
-            this.textBox10.TabIndex = 4;
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(458, 121);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(44, 13);
+            this.label40.TabIndex = 21;
+            this.label40.Text = "Скидка";
             // 
-            // textBox9
+            // pr_kosmetika_count
             // 
-            this.textBox9.Location = new System.Drawing.Point(95, 16);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 3;
+            this.pr_kosmetika_count.Enabled = false;
+            this.pr_kosmetika_count.Location = new System.Drawing.Point(553, 92);
+            this.pr_kosmetika_count.Name = "pr_kosmetika_count";
+            this.pr_kosmetika_count.Size = new System.Drawing.Size(100, 20);
+            this.pr_kosmetika_count.TabIndex = 20;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(459, 95);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(66, 13);
+            this.label39.TabIndex = 19;
+            this.label39.Text = "Количество";
+            // 
+            // pr_client_fio
+            // 
+            this.pr_client_fio.Enabled = false;
+            this.pr_client_fio.Location = new System.Drawing.Point(347, 38);
+            this.pr_client_fio.Name = "pr_client_fio";
+            this.pr_client_fio.Size = new System.Drawing.Size(100, 20);
+            this.pr_client_fio.TabIndex = 18;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(253, 41);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(34, 13);
+            this.label38.TabIndex = 17;
+            this.label38.Text = "ФИО";
+            // 
+            // pr_id_client_1
+            // 
+            this.pr_id_client_1.Enabled = false;
+            this.pr_id_client_1.Location = new System.Drawing.Point(347, 12);
+            this.pr_id_client_1.Name = "pr_id_client_1";
+            this.pr_id_client_1.Size = new System.Drawing.Size(100, 20);
+            this.pr_id_client_1.TabIndex = 16;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(253, 15);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(60, 13);
+            this.label37.TabIndex = 15;
+            this.label37.Text = "Id клиента";
+            // 
+            // pr_kosmetika_stoimost
+            // 
+            this.pr_kosmetika_stoimost.Enabled = false;
+            this.pr_kosmetika_stoimost.Location = new System.Drawing.Point(552, 64);
+            this.pr_kosmetika_stoimost.Name = "pr_kosmetika_stoimost";
+            this.pr_kosmetika_stoimost.Size = new System.Drawing.Size(100, 20);
+            this.pr_kosmetika_stoimost.TabIndex = 14;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(458, 67);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(62, 13);
+            this.label36.TabIndex = 13;
+            this.label36.Text = "Стоимость";
+            // 
+            // pr_kosmetika_name
+            // 
+            this.pr_kosmetika_name.Enabled = false;
+            this.pr_kosmetika_name.Location = new System.Drawing.Point(552, 38);
+            this.pr_kosmetika_name.Name = "pr_kosmetika_name";
+            this.pr_kosmetika_name.Size = new System.Drawing.Size(100, 20);
+            this.pr_kosmetika_name.TabIndex = 12;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(458, 41);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(83, 13);
+            this.label35.TabIndex = 11;
+            this.label35.Text = "Наименование";
+            // 
+            // pr_id_kosmetika_1
+            // 
+            this.pr_id_kosmetika_1.Enabled = false;
+            this.pr_id_kosmetika_1.Location = new System.Drawing.Point(552, 12);
+            this.pr_id_kosmetika_1.Name = "pr_id_kosmetika_1";
+            this.pr_id_kosmetika_1.Size = new System.Drawing.Size(100, 20);
+            this.pr_id_kosmetika_1.TabIndex = 10;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(458, 15);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 13);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Id товара";
+            // 
+            // pr_zapros
+            // 
+            this.pr_zapros.Location = new System.Drawing.Point(120, 105);
+            this.pr_zapros.Name = "pr_zapros";
+            this.pr_zapros.Size = new System.Drawing.Size(75, 23);
+            this.pr_zapros.TabIndex = 6;
+            this.pr_zapros.Text = "Запросить";
+            this.pr_zapros.UseVisualStyleBackColor = true;
+            this.pr_zapros.Click += new System.EventHandler(this.pr_zapros_Click);
+            // 
+            // pr_count
+            // 
+            this.pr_count.Location = new System.Drawing.Point(95, 79);
+            this.pr_count.Name = "pr_count";
+            this.pr_count.Size = new System.Drawing.Size(100, 20);
+            this.pr_count.TabIndex = 5;
+            // 
+            // pr_id_client
+            // 
+            this.pr_id_client.Location = new System.Drawing.Point(95, 49);
+            this.pr_id_client.Name = "pr_id_client";
+            this.pr_id_client.Size = new System.Drawing.Size(100, 20);
+            this.pr_id_client.TabIndex = 4;
+            // 
+            // pr_id_kosmetika
+            // 
+            this.pr_id_kosmetika.Location = new System.Drawing.Point(95, 16);
+            this.pr_id_kosmetika.Name = "pr_id_kosmetika";
+            this.pr_id_kosmetika.Size = new System.Drawing.Size(100, 20);
+            this.pr_id_kosmetika.TabIndex = 3;
             // 
             // label24
             // 
@@ -989,6 +1186,38 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(212, 175);
             this.panel2.TabIndex = 6;
+            // 
+            // textBox19
+            // 
+            this.textBox19.Location = new System.Drawing.Point(118, 92);
+            this.textBox19.Name = "textBox19";
+            this.textBox19.Size = new System.Drawing.Size(84, 20);
+            this.textBox19.TabIndex = 7;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(11, 95);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(77, 13);
+            this.label32.TabIndex = 6;
+            this.label32.Text = "Id косметики:";
+            // 
+            // textBox18
+            // 
+            this.textBox18.Location = new System.Drawing.Point(118, 36);
+            this.textBox18.Name = "textBox18";
+            this.textBox18.Size = new System.Drawing.Size(84, 20);
+            this.textBox18.TabIndex = 5;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(11, 39);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(60, 13);
+            this.label31.TabIndex = 4;
+            this.label31.Text = "Id клиента";
             // 
             // button12
             // 
@@ -1195,74 +1424,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // textBox18
-            // 
-            this.textBox18.Location = new System.Drawing.Point(118, 36);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(84, 20);
-            this.textBox18.TabIndex = 5;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(11, 39);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(60, 13);
-            this.label31.TabIndex = 4;
-            this.label31.Text = "Id клиента";
-            // 
-            // textBox19
-            // 
-            this.textBox19.Location = new System.Drawing.Point(118, 92);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(84, 20);
-            this.textBox19.TabIndex = 7;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(11, 95);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(77, 13);
-            this.label32.TabIndex = 6;
-            this.label32.Text = "Id косметики:";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(16, 70);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(18, 13);
-            this.label33.TabIndex = 18;
-            this.label33.Text = "ID";
-            // 
-            // textBox20
-            // 
-            this.textBox20.Enabled = false;
-            this.textBox20.Location = new System.Drawing.Point(111, 67);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(181, 20);
-            this.textBox20.TabIndex = 17;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(26, 88);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(137, 13);
-            this.label34.TabIndex = 8;
-            this.label34.Text = "Характеристики клиента:";
-            // 
-            // podobratt
-            // 
-            this.podobratt.Location = new System.Drawing.Point(17, 284);
-            this.podobratt.Name = "podobratt";
-            this.podobratt.Size = new System.Drawing.Size(152, 21);
-            this.podobratt.TabIndex = 9;
-            this.podobratt.Text = "Подобрать";
-            this.podobratt.UseVisualStyleBackColor = true;
-            this.podobratt.Click += new System.EventHandler(this.podobratt_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1383,15 +1544,13 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Button pr_zapros;
+        private System.Windows.Forms.TextBox pr_count;
+        private System.Windows.Forms.TextBox pr_id_client;
+        private System.Windows.Forms.TextBox pr_id_kosmetika;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Panel panel1;
@@ -1424,6 +1583,23 @@
         private System.Windows.Forms.TextBox textBox20;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Button podobratt;
+        private System.Windows.Forms.TextBox pr_kosmetika_stoimost;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox pr_kosmetika_name;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox pr_id_kosmetika_1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox pr_kosmetika_count;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.TextBox pr_client_fio;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox pr_id_client_1;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox pr_stoimost_skidka;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.TextBox pr_skidka;
+        private System.Windows.Forms.Label label40;
 
 
     }

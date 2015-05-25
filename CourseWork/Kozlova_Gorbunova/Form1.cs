@@ -140,7 +140,7 @@ namespace Koz_Gor_kurs
             {
                 case 0: //список
                     dt = new DataTable();
-                    cmd.CommandText = "SELECT * FROM kosmetika";
+                    cmd = new SQLiteCommand("SELECT * FROM kosmetika", cnn);
                     dt.Load(cmd.ExecuteReader());
                     dataGridView4.DataSource = dt;
                     break;
@@ -154,7 +154,7 @@ namespace Koz_Gor_kurs
 
         private void client_add_Click(object sender, EventArgs e)
         {
-            cmd.CommandText = "INSERT INTO client (fio, sym) VALUES (\'" + client_fio.Text + "\', 0)";
+            cmd = new SQLiteCommand("INSERT INTO client (fio, sym) VALUES (\'" + client_fio.Text + "\', 0)", cnn);
             cmd.ExecuteNonQuery();
             MessageBox.Show("Успешно добавлен!");
         }
@@ -162,7 +162,7 @@ namespace Koz_Gor_kurs
 
         private void kosmetika_add_Click(object sender, EventArgs e)
         {
-            cmd.CommandText = "INSERT INTO kosmetika (type, name, stoimost, count, end_date) VALUES (\'" + kosmetika_type.Text + "\', \'" + kosmetika_name.Text + "\', " + kosmetika_stoimost.Text + ", " + kosmetika_count.Text + ", \'" + kosmetika_date.Text.Replace('.', '-') + "\');";
+            cmd = new SQLiteCommand("INSERT INTO kosmetika (type, name, stoimost, count, end_date) VALUES (\'" + kosmetika_type.Text + "\', \'" + kosmetika_name.Text + "\', " + kosmetika_stoimost.Text + ", " + kosmetika_count.Text + ", \'" + kosmetika_date.Text.Replace('.', '-') + "\');", cnn);
             cmd.ExecuteNonQuery();
             MessageBox.Show("Успешно добавлена");
         }
@@ -173,7 +173,7 @@ namespace Koz_Gor_kurs
             {
                 try
                 {
-                    cmd.CommandText = "SELECT * FROM client  WHERE id = '" + id_client.Text + "'";
+                    cmd = new SQLiteCommand("SELECT * FROM client  WHERE id = '" + id_client.Text + "'", cnn);
                     MessageBox.Show("Введено число!");
                 }
                 catch (FormatException)
@@ -335,7 +335,7 @@ namespace Koz_Gor_kurs
 
         private void button4_Click(object sender, EventArgs e)
         {
-            cmd = new SQLiteCommand("UPDATE kosmetika SET type = '" + textBox2.Text + "', name = '" + textBox3.Text + "', stoimost = '" + textBox4.Text + "', count = '" + textBox5.Text + "', end_date = '" + dateTimePicker1.Text + "'", cnn);
+            cmd = new SQLiteCommand("UPDATE kosmetika SET type = '" + textBox2.Text + "', name = '" + textBox3.Text + "', stoimost = '" + textBox4.Text + "', count = '" + textBox5.Text + "', end_date = '" + dateTimePicker1.Text + "' WHERE id = '" + textBox20.Text + "'", cnn);
             cmd.ExecuteNonQuery();
             MessageBox.Show("Успешно обновлено!");
         }
@@ -359,6 +359,63 @@ namespace Koz_Gor_kurs
             cmd = new SQLiteCommand("SELECT kosmetika.id, kosmetika.type, kosmetika.name, kosmetika.stoimost, kosmetika.count, kosmetika.end_date FROM kosmetika, harakteristika, harakteristika_kosmetika WHERE kosmetika.id = harakteristika_kosmetika.id_kosmetika AND  harakteristika_kosmetika.id_harakteristika = harakteristika.id AND harakteristika.name = '" + listBox2.SelectedItem.ToString() + "'  ", cnn);
             dt.Load(cmd.ExecuteReader());
             dataGridView5.DataSource = dt;
+        }
+
+        private void pr_zapros_Click(object sender, EventArgs e)
+        {
+
+            cmd = new SQLiteCommand("SELECT * FROM kosmetika WHERE id = '" + pr_id_kosmetika.Text + "'", cnn);
+            SQLiteDataReader rd = cmd.ExecuteReader();
+
+            rd.Read();
+            pr_id_kosmetika_1.Text = rd["id"].ToString();
+            pr_kosmetika_name.Text = rd["name"].ToString();
+            pr_kosmetika_stoimost.Text = rd["stoimost"].ToString();
+            pr_kosmetika_count.Text = pr_count.Text;
+            dateTimePicker1.Text = rd["end_date"].ToString();
+
+            cmd = new SQLiteCommand("SELECT * FROM client WHERE id = '" + pr_id_client.Text + "'", cnn);
+            SQLiteDataReader rd1 = cmd.ExecuteReader();
+
+            rd1.Read();
+            
+            pr_id_client_1.Text = rd1["id"].ToString();
+            pr_client_fio.Text = rd1["fio"].ToString();
+            double skidka = Double.Parse(rd1["sym"].ToString());
+            pr_skidka.Text = ((skidka > 10000) ? 10 : (skidka > 5000) ? 5 : 3).ToString();
+
+            pr_stoimost_skidka.Text = ((Double.Parse(pr_kosmetika_stoimost.Text) - ((Double.Parse(pr_kosmetika_stoimost.Text) / 100) * Double.Parse(pr_skidka.Text))) * Int32.Parse(pr_kosmetika_count.Text)).ToString();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            cmd = new SQLiteCommand("SELECT count FROM kosmetika WHERE kosmetika.id = '" + pr_id_kosmetika_1.Text + "'", cnn);
+            SQLiteDataReader rd = cmd.ExecuteReader();
+            rd.Read();
+
+            if (Int32.Parse(rd["count"].ToString()) < Int32.Parse(pr_kosmetika_count.Text)) {
+                MessageBox.Show("Сделка не может быть совершена из-за отсутствия товара в нужном количестве.");
+                return;
+            }
+
+            cmd = new SQLiteCommand("INSERT INTO prodaja(id_client, data, sym) VALUES ('" + pr_id_client_1.Text + "', date('now'), '" + pr_stoimost_skidka.Text + "');", cnn);
+            cmd.ExecuteNonQuery();
+
+            cmd = new SQLiteCommand("SELECT id FROM prodaja WHERE id_client = '" + pr_id_client_1.Text + "' ORDER BY id DESC LIMIT 1", cnn);
+            SQLiteDataReader rd1 = cmd.ExecuteReader();
+            rd1.Read();
+
+            cmd = new SQLiteCommand("INSERT INTO list_prodaja(id_prodaja, id_kosmetika, count, sym) VALUES ('" + rd1["id"].ToString() + "', '" + pr_id_kosmetika_1.Text + "', '" + pr_count.Text + "', '" + pr_stoimost_skidka.Text + "');", cnn);
+            cmd.ExecuteNonQuery();
+
+            cmd = new SQLiteCommand("UPDATE client SET sym = sym + '" + pr_stoimost_skidka.Text + "' WHERE id = '" + pr_id_client_1.Text + "'", cnn);
+            cmd.ExecuteNonQuery();
+
+            cmd = new SQLiteCommand("UPDATE kosmetika SET count = count - '" + pr_count + "' WHERE id = '" + pr_id_kosmetika_1.Text + "'", cnn);
+            cmd.ExecuteNonQuery();
+
+            MessageBox.Show("Сделка успешно завершена.");
         }
 
     }
