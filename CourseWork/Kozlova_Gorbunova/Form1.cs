@@ -12,6 +12,9 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Data.Common;
 
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+
 namespace Koz_Gor_kurs
 {
     public partial class Form1 : Form
@@ -217,7 +220,7 @@ namespace Koz_Gor_kurs
             var res = openFileDialog1.ShowDialog();
            if (res == DialogResult.OK)
             {
-                Bitmap image1 = (Bitmap)Image.FromFile(openFileDialog1.FileName, true);
+                Bitmap image1 = (Bitmap)System.Drawing.Image.FromFile(openFileDialog1.FileName, true);
                 //Graphics gui = Graphics.FromImage(image1);
                 //gui.DrawString(textBox15.Text.ToString(), new Font("Arial", 16), Brushes.Pink, new PointF(10, 10));
                 pictureBox1.Image = image1;
@@ -253,7 +256,7 @@ namespace Koz_Gor_kurs
         private void button16_Click(object sender, EventArgs e)
         {
             Graphics gui = Graphics.FromImage(pictureBox1.Image);
-            gui.DrawString(textBox15.Text.ToString(), new Font("Arial", 30), Brushes.Pink, new PointF(10, 10));
+            gui.DrawString(textBox15.Text.ToString(), new System.Drawing.Font("Arial", 30), Brushes.Pink, new PointF(10, 10));
             pictureBox1.Image = pictureBox1.Image;    
         }
 
@@ -402,7 +405,7 @@ namespace Koz_Gor_kurs
             cmd = new SQLiteCommand("INSERT INTO prodaja(id_client, data, sym) VALUES ('" + pr_id_client_1.Text + "', date('now'), '" + pr_stoimost_skidka.Text + "');", cnn);
             cmd.ExecuteNonQuery();
 
-            cmd = new SQLiteCommand("SELECT id FROM prodaja WHERE id_client = '" + pr_id_client_1.Text + "' ORDER BY id DESC LIMIT 1", cnn);
+            cmd = new SQLiteCommand("SELECT id, data FROM prodaja WHERE id_client = '" + pr_id_client_1.Text + "' ORDER BY id DESC LIMIT 1", cnn);
             SQLiteDataReader rd1 = cmd.ExecuteReader();
             rd1.Read();
 
@@ -416,7 +419,52 @@ namespace Koz_Gor_kurs
             cmd = new SQLiteCommand("UPDATE kosmetika SET count = count - '" + pr_count.Text + "' WHERE id = '" + pr_id_kosmetika_1.Text + "'", cnn);
             cmd.ExecuteNonQuery();
 
+            blank_zakaza(rd1["id"].ToString(), 
+                         pr_client_fio.Text,
+                         pr_id_kosmetika_1.Text,
+                         pr_kosmetika_name.Text,
+                         pr_kosmetika_count.Text,
+                         pr_kosmetika_stoimost.Text,
+                         pr_skidka.Text,
+                         pr_stoimost_skidka.Text, 
+                         rd1["data"].ToString());
+
             MessageBox.Show("Сделка успешно завершена.");
+        }
+
+        private void blank_zakaza(string id_prodaja, string fio, string id_kosmetika, string name_kosmetika, string count, string stoimost, string skidka, string stoimost_so_skidka, string date)
+        {
+            var doc = new Document();
+            PdfWriter.GetInstance(doc, new FileStream(@"" + id_prodaja + ".blank_zakaza.pdf", FileMode.Create));
+            doc.Open();
+            var baseFont = BaseFont.CreateFont("ARIAL.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+            var bc = BaseColor.BLACK;
+ 
+            iTextSharp.text.Image k = iTextSharp.text.Image.GetInstance(@"logo.jpg");
+            k.Alignment = Element.ALIGN_CENTER;
+            doc.Add(k);
+
+            var j = new Phrase("Бланк Заказа\nСетевая косметическая фирма «Бьюти». ", new iTextSharp.text.Font(baseFont, 12, 0, bc));
+            var a1 = new Paragraph(j)
+            {
+                Alignment = Element.ALIGN_CENTER,
+                SpacingAfter = 5
+            };
+            doc.Add(a1);
+
+            doc.Add(new Paragraph("ФИО: " + fio, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
+            doc.Add(new Paragraph("Номер товара: " + id_kosmetika, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
+            doc.Add(new Paragraph("Название товара: " + name_kosmetika, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
+            doc.Add(new Paragraph("Количество: " + count, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
+            doc.Add(new Paragraph("Цена за единицу: " + stoimost, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
+            doc.Add(new Paragraph("Скидка: " + skidka, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
+            doc.Add(new Paragraph("Итоговая стоимость: " + stoimost_so_skidka, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
+            var k1 = new Paragraph("\n\nДата заказа: " + date, new iTextSharp.text.Font(baseFont, 12, 0, bc));
+            k1.Alignment = Element.ALIGN_RIGHT;
+            doc.Add(k1);
+
+            doc.Close();
+            //MessageBox.Show("Готово!");
         }
 
     }
