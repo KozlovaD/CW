@@ -412,7 +412,8 @@ namespace Koz_Gor_kurs
             cmd = new SQLiteCommand("UPDATE client SET sym = sym + '" + pr_stoimost_skidka.Text + "' WHERE id = '" + pr_id_client_1.Text + "'", cnn);
             cmd.ExecuteNonQuery();
 
-            cmd = new SQLiteCommand("UPDATE kosmetika SET count = count - '" + pr_count + "' WHERE id = '" + pr_id_kosmetika_1.Text + "'", cnn);
+            
+            cmd = new SQLiteCommand("UPDATE kosmetika SET count = count - '" + pr_count.Text + "' WHERE id = '" + pr_id_kosmetika_1.Text + "'", cnn);
             cmd.ExecuteNonQuery();
 
             MessageBox.Show("Сделка успешно завершена.");
