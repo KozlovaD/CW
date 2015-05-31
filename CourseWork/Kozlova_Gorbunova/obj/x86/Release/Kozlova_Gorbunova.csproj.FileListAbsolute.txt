@@ -8,3 +8,7 @@ C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Release\Koz_Gor_k
 C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Release\Kozlova_Gorbunova.csproj.GenerateResource.Cache
 C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Release\Kozlova_Gorbunova.exe
 C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Release\Kozlova_Gorbunova.pdb
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\bin\Release\AODL.dll
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\bin\Release\itextsharp.dll
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\bin\Release\itextsharp.xml

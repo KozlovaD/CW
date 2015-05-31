@@ -15,6 +15,15 @@ using System.Data.Common;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
+using AODL.Document.Content.Tables;
+using AODL.Document.Content.Text;
+using AODL.Document.SpreadsheetDocuments;
+using AODL.Document.Styles;
+using AODL.Document.TextDocuments;
+using AODL.Document.Content.Draw;
+
+
+
 namespace Koz_Gor_kurs
 {
     public partial class Form1 : Form
@@ -445,6 +454,43 @@ namespace Koz_Gor_kurs
             doc.Add(k);
 
             var j = new Phrase("Бланк Заказа\nСетевая косметическая фирма «Бьюти». ", new iTextSharp.text.Font(baseFont, 12, 0, bc));
+            var a1 = new iTextSharp.text.Paragraph(j)
+            {
+                Alignment = Element.ALIGN_CENTER,
+                SpacingAfter = 5
+            };
+            doc.Add(a1);
+
+            doc.Add(new iTextSharp.text.Paragraph("ФИО: " + fio, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
+            doc.Add(new iTextSharp.text.Paragraph("Номер товара: " + id_kosmetika, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
+            doc.Add(new iTextSharp.text.Paragraph("Название товара: " + name_kosmetika, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
+            doc.Add(new iTextSharp.text.Paragraph("Количество: " + count, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
+            doc.Add(new iTextSharp.text.Paragraph("Цена за единицу: " + stoimost, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
+            doc.Add(new iTextSharp.text.Paragraph("Скидка: " + skidka, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
+            doc.Add(new iTextSharp.text.Paragraph("Итоговая стоимость: " + stoimost_so_skidka, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
+            var k1 = new iTextSharp.text.Paragraph("\n\nДата заказа: " + date, new iTextSharp.text.Font(baseFont, 12, 0, bc));
+            k1.Alignment = Element.ALIGN_RIGHT;
+            doc.Add(k1);
+
+            doc.Close();
+            //MessageBox.Show("Готово!");
+        }
+
+        private void blank_zakaza_firm(string id_prodaja,  string id_kosmetika, string name_kosmetika, string count, string date)
+        {
+            /*
+            var doc = new Document();
+            
+            PdfWriter.GetInstance(doc, new FileStream(@"" + id_prodaja + ".nakladnaja.pdf", FileMode.Create));
+            doc.Open();
+            var baseFont = BaseFont.CreateFont("ARIAL.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+            var bc = BaseColor.BLACK;
+
+            iTextSharp.text.Image k = iTextSharp.text.Image.GetInstance(@"logo.jpg");
+            k.Alignment = Element.ALIGN_CENTER;
+            doc.Add(k);
+
+            var j = new Phrase("Бланк Заказа\nСетевая косметическая фирма «Бьюти». ", new iTextSharp.text.Font(baseFont, 12, 0, bc));
             var a1 = new Paragraph(j)
             {
                 Alignment = Element.ALIGN_CENTER,
@@ -452,19 +498,85 @@ namespace Koz_Gor_kurs
             };
             doc.Add(a1);
 
-            doc.Add(new Paragraph("ФИО: " + fio, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
+            doc.Add(new Paragraph("Филиал: Ульяновский", new iTextSharp.text.Font(baseFont, 12, 0, bc)));
             doc.Add(new Paragraph("Номер товара: " + id_kosmetika, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
             doc.Add(new Paragraph("Название товара: " + name_kosmetika, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
             doc.Add(new Paragraph("Количество: " + count, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
-            doc.Add(new Paragraph("Цена за единицу: " + stoimost, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
-            doc.Add(new Paragraph("Скидка: " + skidka, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
-            doc.Add(new Paragraph("Итоговая стоимость: " + stoimost_so_skidka, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
+            
             var k1 = new Paragraph("\n\nДата заказа: " + date, new iTextSharp.text.Font(baseFont, 12, 0, bc));
             k1.Alignment = Element.ALIGN_RIGHT;
             doc.Add(k1);
 
             doc.Close();
             //MessageBox.Show("Готово!");
+            */
+            /*
+            XComponentContext localContext = uno.util.Bootstrap.bootstrap();
+
+
+            unoidl.com.sun.star.lang.XMultiServiceFactory multiServiceFactory =
+               (unoidl.com.sun.star.lang.XMultiServiceFactory)localContext.getServiceManager();
+
+            XComponentLoader componentLoader = (XComponentLoader)multiServiceFactory.createInstance("com.sun.star.frame.Desktop");
+
+            */
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            string fileToPrint = "fileToPrint.odt";
+
+            //Create a new text document
+            TextDocument document = new TextDocument();
+            document.New();
+            //Create a standard paragraph using the ParagraphBuilder
+            AODL.Document.Content.Text.Paragraph paragraph = ParagraphBuilder.CreateStandardTextParagraph(document);
+            //Add some simple text
+            paragraph.TextContent.Add(new SimpleText(document, "Some simple text!"));
+            //Add the paragraph to the document
+            document.Content.Add(paragraph);
+            //Save empty
+            document.SaveTo(fileToPrint);
+
+            MessageBox.Show("OK");
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            //создаем новый документ типа электронная таблица
+            SpreadsheetDocument spreadsheetDocument = new SpreadsheetDocument();
+            spreadsheetDocument.New();
+            //создаем новую таблицу
+            Table table = new Table(spreadsheetDocument, "First", "tablefirst");
+            //создаем новую ячейку, без дополнительных стилей
+            Cell cell = table.CreateCell("cell001");
+            cell.OfficeValueType = "string";
+            //устанавливаем границы
+            cell.CellStyle.CellProperties.Border = Border.NormalSolid;
+
+            //создаем новый параграф
+            AODL.Document.Content.Text.Paragraph paragraph =
+            ParagraphBuilder.CreateSpreadsheetParagraph(spreadsheetDocument);
+            //добавляем в него - текст
+            for (int i = 1; i <= 4; ++i)
+            {
+                paragraph.Node.InnerText = "";
+                paragraph.TextContent.Add(new SimpleText(spreadsheetDocument, "test" + i));
+                //теперь добавляем созданный параграф в ячейку
+                cell.Content.Add(paragraph);
+                //MessageBox.Show("paragtaph values is: " +paragraph.Node.InnerText);
+                //ячейка, содержащая текст появится на пересечении строки с индексом 2 и 
+                //колонки с индексом 3
+                //все предыдущие колонки и строки будут созданы автоматически
+                //table.RowCollection[0].CellCollection[0].Content.Add(paragraph);
+
+                table.InsertCellAt(2, i, cell);
+                //MessageBox.Show("cell value is: " +cell.Node.InnerText);
+                //осталось вставить готовый объект с таблицей в документ и сохранить его     
+            }
+            spreadsheetDocument.TableCollection.Add(table);
+            spreadsheetDocument.SaveTo("simple.ods");
+            MessageBox.Show("OK");
         }
 
     }
