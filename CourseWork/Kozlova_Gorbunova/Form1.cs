@@ -483,74 +483,39 @@ namespace Koz_Gor_kurs
 
         private void blank_zakaza_firm(string id_prodaja,  string id_kosmetika, string name_kosmetika, string count, string date)
         {
-            /*
-            var doc = new Document();
-            
-            PdfWriter.GetInstance(doc, new FileStream(@"" + id_prodaja + ".nakladnaja.pdf", FileMode.Create));
-            doc.Open();
-            var baseFont = BaseFont.CreateFont("ARIAL.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-            var bc = BaseColor.BLACK;
 
-            iTextSharp.text.Image k = iTextSharp.text.Image.GetInstance(@"logo.jpg");
-            k.Alignment = Element.ALIGN_CENTER;
-            doc.Add(k);
-
-            var j = new Phrase("Бланк Заказа\nСетевая косметическая фирма «Бьюти». ", new iTextSharp.text.Font(baseFont, 12, 0, bc));
-            var a1 = new Paragraph(j)
-            {
-                Alignment = Element.ALIGN_CENTER,
-                SpacingAfter = 5
-            };
-            doc.Add(a1);
-
-            doc.Add(new Paragraph("Филиал: Ульяновский", new iTextSharp.text.Font(baseFont, 12, 0, bc)));
-            doc.Add(new Paragraph("Номер товара: " + id_kosmetika, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
-            doc.Add(new Paragraph("Название товара: " + name_kosmetika, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
-            doc.Add(new Paragraph("Количество: " + count, new iTextSharp.text.Font(baseFont, 12, 0, bc)));
-            
-            var k1 = new Paragraph("\n\nДата заказа: " + date, new iTextSharp.text.Font(baseFont, 12, 0, bc));
-            k1.Alignment = Element.ALIGN_RIGHT;
-            doc.Add(k1);
-
-            doc.Close();
-            //MessageBox.Show("Готово!");
-            */
-            /*
-            XComponentContext localContext = uno.util.Bootstrap.bootstrap();
-
-
-            unoidl.com.sun.star.lang.XMultiServiceFactory multiServiceFactory =
-               (unoidl.com.sun.star.lang.XMultiServiceFactory)localContext.getServiceManager();
-
-            XComponentLoader componentLoader = (XComponentLoader)multiServiceFactory.createInstance("com.sun.star.frame.Desktop");
-
-            */
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            string fileToPrint = "fileToPrint.odt";
-
-            //Create a new text document
             TextDocument document = new TextDocument();
             document.New();
-            //Create a standard paragraph using the ParagraphBuilder
-            AODL.Document.Content.Text.Paragraph paragraph = ParagraphBuilder.CreateStandardTextParagraph(document);
-            //Add some simple text
-            paragraph.TextContent.Add(new SimpleText(document, "Some simple text!"));
-            //Add the paragraph to the document
-            document.Content.Add(paragraph);
-            //Save empty
-            document.SaveTo("C:\\" + fileToPrint);
+            AODL.Document.Content.Text.Paragraph p1 = ParagraphBuilder.CreateStandardTextParagraph(document);
+            p1.TextContent.Add(new SimpleText(document, "Бланк Заказa. Сетевая косметическая фирма «Бьюти» \n\r"));
+            document.Content.Add(p1);
 
-            MessageBox.Show("OK");
+            AODL.Document.Content.Text.Paragraph p2 = ParagraphBuilder.CreateStandardTextParagraph(document);
+            p2.TextContent.Add(new SimpleText(document, "Филиал: Ульяновский"));
+            document.Content.Add(p2);
+
+            AODL.Document.Content.Text.Paragraph p3 = ParagraphBuilder.CreateStandardTextParagraph(document);
+            p3.TextContent.Add(new SimpleText(document, "Номер товара: " + id_kosmetika));
+            document.Content.Add(p3);
+
+            AODL.Document.Content.Text.Paragraph p4 = ParagraphBuilder.CreateStandardTextParagraph(document);
+            p4.TextContent.Add(new SimpleText(document, "Название товара:" + name_kosmetika));
+            document.Content.Add(p4);
+
+            AODL.Document.Content.Text.Paragraph p5 = ParagraphBuilder.CreateStandardTextParagraph(document);
+            p5.TextContent.Add(new SimpleText(document, "Количество:" + count));
+            document.Content.Add(p5);
+
+            AODL.Document.Content.Text.Paragraph p6 = ParagraphBuilder.CreateStandardTextParagraph(document);
+            p6.TextContent.Add(new SimpleText(document, "Дата заказа: " + date));
+            document.Content.Add(p6);
+
+            document.SaveTo(id_kosmetika + ".blank_zakaza_firm.odt"); 
+
         }
 
         private void button18_Click(object sender, EventArgs e)
         {
-
-
-
             cmd = new SQLiteCommand("SELECT  prodaja.sym, prodaja.data FROM prodaja  WHERE data > '" + ot_date_begin.Text + "' AND data < '" + ot_date_end.Text + "'", cnn);
 
             SQLiteDataReader rd1 = cmd.ExecuteReader();
@@ -598,6 +563,14 @@ namespace Koz_Gor_kurs
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+
+
+            MessageBox.Show("OK");
 
         }
 
