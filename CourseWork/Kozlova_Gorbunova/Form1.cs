@@ -22,7 +22,8 @@ using AODL.Document.Styles;
 using AODL.Document.TextDocuments;
 using AODL.Document.Content.Draw;
 
-
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Reflection;
 
 namespace Koz_Gor_kurs
 {
@@ -66,7 +67,7 @@ namespace Koz_Gor_kurs
             }
 
             dt = new DataTable();
-            cmd = new SQLiteCommand("SELECT * FROM kosmetika ORDER BY end_date", cnn);
+            cmd = new SQLiteCommand("SELECT * FROM kosmetika ORDER BY end_date DESC", cnn);
             dt.Load(cmd.ExecuteReader());
             dataGridView2.DataSource = dt;
 
@@ -354,7 +355,11 @@ namespace Koz_Gor_kurs
 
         private void podbor_tovara_Click(object sender, EventArgs e)
         {
-            cmd = new SQLiteCommand("SELECT harakteristika.name FROM harakteristika, harakteristika_client WHERE  harakteristika.id = harakteristika_client.id_harakteristika AND harakteristika_client.id_client = '" + id_client.Text + "' ", cnn);
+            //cmd = new SQLiteCommand("SELECT harakteristika.name FROM harakteristika, harakteristika_client WHERE  harakteristika.id = harakteristika_client.id_harakteristika AND harakteristika_client.id_client = '" + id_client.Text + "' ", cnn);
+            
+                        cmd = new SQLiteCommand("SELECT harakteristika.name  FROM harakteristika, harakteristika_client, client WHERE  harakteristika.id = harakteristika_client.id_harakteristika AND harakteristika_client.id_client = client.id AND client.fio = '" + id_client.Text + "' ", cnn);
+
+
             SQLiteDataReader reader = cmd.ExecuteReader();
 
             listBox2.Items.Clear();
@@ -536,47 +541,64 @@ namespace Koz_Gor_kurs
             //Add the paragraph to the document
             document.Content.Add(paragraph);
             //Save empty
-            document.SaveTo(fileToPrint);
+            document.SaveTo("C:\\" + fileToPrint);
 
             MessageBox.Show("OK");
         }
 
         private void button18_Click(object sender, EventArgs e)
         {
-            //создаем новый документ типа электронная таблица
-            SpreadsheetDocument spreadsheetDocument = new SpreadsheetDocument();
-            spreadsheetDocument.New();
-            //создаем новую таблицу
-            Table table = new Table(spreadsheetDocument, "First", "tablefirst");
-            //создаем новую ячейку, без дополнительных стилей
-            Cell cell = table.CreateCell("cell001");
-            cell.OfficeValueType = "string";
-            //устанавливаем границы
-            cell.CellStyle.CellProperties.Border = Border.NormalSolid;
 
-            //создаем новый параграф
-            AODL.Document.Content.Text.Paragraph paragraph =
-            ParagraphBuilder.CreateSpreadsheetParagraph(spreadsheetDocument);
-            //добавляем в него - текст
-            for (int i = 1; i <= 4; ++i)
+
+
+            cmd = new SQLiteCommand("SELECT  prodaja.sym, prodaja.data FROM prodaja  WHERE data > '" + ot_date_begin.Text + "' AND data < '" + ot_date_end.Text + "'", cnn);
+
+            SQLiteDataReader rd1 = cmd.ExecuteReader();
+            
+            Excel.Application oXL;
+            Excel._Workbook oWB;
+            Excel._Worksheet oSheet;
+            Excel.Range oRng;
+
+            //Start Excel and get Application object.
+            oXL = new Excel.Application();
+            oXL.Visible = false;
+
+            //Get a new workbook.
+            oWB = (Excel._Workbook)(oXL.Workbooks.Add(Missing.Value));
+            oSheet = (Excel._Worksheet)oWB.ActiveSheet;
+
+            oSheet.Cells[1, "F"] = "Отчет: ";
+
+            oSheet.Cells[3, "E"] = ot_date_begin.Text;
+            oSheet.Cells[3, "F"] = "-";
+            oSheet.Cells[3, "G"] = ot_date_end.Text;
+
+            oSheet.Cells[5, "A"] = "дата";
+            oSheet.Cells[5, "B"] = "Сумма продаж";
+
+            int i = 5;
+            int summ = 0;
+            while (rd1.Read())
             {
-                paragraph.Node.InnerText = "";
-                paragraph.TextContent.Add(new SimpleText(spreadsheetDocument, "test" + i));
-                //теперь добавляем созданный параграф в ячейку
-                cell.Content.Add(paragraph);
-                //MessageBox.Show("paragtaph values is: " +paragraph.Node.InnerText);
-                //ячейка, содержащая текст появится на пересечении строки с индексом 2 и 
-                //колонки с индексом 3
-                //все предыдущие колонки и строки будут созданы автоматически
-                //table.RowCollection[0].CellCollection[0].Content.Add(paragraph);
+                i++;
+                oSheet.Cells[i, "A"] = rd1["data"].ToString();
+                oSheet.Cells[i, "B"] = rd1["sym"].ToString();
 
-                table.InsertCellAt(2, i, cell);
-                //MessageBox.Show("cell value is: " +cell.Node.InnerText);
-                //осталось вставить готовый объект с таблицей в документ и сохранить его     
+                summ += Int32.Parse(rd1["sym"].ToString());
             }
-            spreadsheetDocument.TableCollection.Add(table);
-            spreadsheetDocument.SaveTo("simple.ods");
-            MessageBox.Show("OK");
+
+            i++;
+            oSheet.Cells[i, "A"] = "Общая сумма:";
+            oSheet.Cells[i, "B"] = summ.ToString();
+
+            //Method #2
+            oXL.SaveWorkspace();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
     }

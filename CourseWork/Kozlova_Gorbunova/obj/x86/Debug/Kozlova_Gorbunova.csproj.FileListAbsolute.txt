@@ -9,3 +9,4 @@ C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\bin\Debug\Kozlova_Gorbuno
 C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\bin\Debug\System.Data.SQLite.dll
 C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\obj\x86\Debug\Kozlova_Gorbunova.csprojResolveAssemblyReference.cache
 C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\bin\Debug\itextsharp.xml
+C:\project\Kozlova\source\CourseWork\Kozlova_Gorbunova\bin\Debug\cli_uretypes.dll
