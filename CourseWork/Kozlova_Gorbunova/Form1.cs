@@ -24,6 +24,7 @@ using AODL.Document.Content.Draw;
 
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
+using ZedGraph;
 
 namespace Koz_Gor_kurs
 {
@@ -36,7 +37,7 @@ namespace Koz_Gor_kurs
         public Form1()
         {
             InitializeComponent();
-           
+            DrawGraph();
 
             if (File.Exists("base.db")) 
             {
@@ -76,6 +77,60 @@ namespace Koz_Gor_kurs
             dt.Load(cmd.ExecuteReader());
             dataGridView1.DataSource = dt;
 
+        }
+
+
+        private ZedGraph.ZedGraphControl zedGraph;
+
+        private void DrawGraph()
+        {
+            GraphPane pane = zedGraph.GraphPane;
+            pane.CurveList.Clear();
+
+            // Количество столбцов
+            int itemscount = 9;
+
+            // Сгенерируем данные для оси X (длин столбцов)
+            double[] barLength = GenerateData(itemscount);
+
+            double[] barPosition = new double[itemscount];
+
+            // Заполним данные по оси Y (положения столбцов)
+            for (int i = 0; i < itemscount; i++)
+            {
+                barPosition[i] = i + 1;
+            }
+
+            // !!! Создадим гистограмму. 
+            // Обратите внимание на порядок следования массивов: 
+            // сначала идут данные по оси X (длины столцов), потом по оси Y (положения столбцов)
+            // Для вертикальных гистограмм значения по осям X и Y имеют противоположные значения.
+            pane.AddBar("", barLength, barPosition, Color.Blue);
+
+            // Этот параметр указывает, что базовой осью для гистограммы будет ось Y,
+            // то есть положения столбцов соответствуют значениям по оси Y.
+            pane.BarSettings.Base = BarBase.Y;
+
+            // Обновим данные об осях
+            zedGraph.AxisChange();
+
+            // Обновляем график
+            zedGraph.Invalidate();
+        }
+
+        private double[] GenerateData(int itemscount)
+        {
+            Random rnd = new Random();
+
+            double[] values = new double[itemscount];
+
+            // Заполним данные
+            for (int i = 0; i < itemscount; i++)
+            {
+                values[i] = rnd.NextDouble();
+            }
+
+            return values;
         }
 
 
